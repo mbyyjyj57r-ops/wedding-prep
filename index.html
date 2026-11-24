@@ -302,6 +302,21 @@
   .link-btn.primary{background:var(--rose-soft); border-color:#EFD6D1; color:var(--rose-deep);}
   .link-btn:active{background:#F4EDE4;}
 
+  /* itinerary timeline inside reference card */
+  .itin{list-style:none; margin:12px 0 0; padding:0;}
+  .itin li{display:flex; gap:9px; padding:7px 0; border-top:1px solid var(--line-soft); font-size:12.5px; line-height:1.55;}
+  .itin li:first-child{border-top:none; padding-top:2px;}
+  .itin .d{flex:0 0 auto; width:54px; font-weight:700; font-size:11px; color:var(--rose-deep); padding-top:2px; letter-spacing:-0.02em;}
+  .itin .c{flex:1 1 auto; min-width:0; color:var(--ink-2);}
+  .itin .c b{display:block; font-weight:700; color:var(--ink); font-size:13px;}
+  .price-line{display:flex; align-items:baseline; gap:7px; margin-top:10px;}
+  .price-line b{font-size:17px; font-weight:800; color:var(--ink); letter-spacing:-0.02em;}
+  .price-line small{font-size:11.5px; color:var(--muted);}
+  .kv{margin-top:2px;}
+  .kv dt{font-size:10.5px; font-weight:700; color:var(--muted); letter-spacing:0.04em; text-transform:uppercase;}
+  .kv dd{margin:1px 0 0; font-size:13.5px; color:var(--ink-2); line-height:1.6;}
+  .kv > div + div{margin-top:9px;}
+
   /* details / summary restaurant rows */
   .spot{border-top:1px solid var(--line-soft); padding:13px 0 3px;}
   .spot:first-of-type{border-top:none; padding-top:6px;}
@@ -858,7 +873,7 @@
       <div class="hero-top">
         <div>
           <div class="hero-kicker"><span class="dot"></span>HONEYMOON</div>
-          <p class="hero-sub">하와이 · 항공 · 숙소 · 준비물</p>
+          <p class="hero-sub">하와이 7박 9일 · 하나투어 허니문</p>
         </div>
         <div class="dday empty" id="dday-honeymoon"><b>미정</b><small>날짜</small></div>
       </div>
@@ -889,27 +904,90 @@
       </form>
     </div>
 
-    <div class="section-head"><h2>참고자료 · 메모</h2><span>자유롭게</span></div>
+    <div class="section-head"><h2>참고자료 · 메모</h2><span>하나투어 상품</span></div>
+    <div class="ref">
+      <div class="ref-head">
+        <div class="ref-icon" aria-hidden="true">✈️</div>
+        <h3>하나투어 하와이 허니문 상품</h3>
+      </div>
+      <div class="body">
+        <p><strong>하와이 허니문 마우이 연계 9일</strong> — 하얏트 리젠시 마우이 오션뷰 3박 + 하얏트 리젠시 와이키키 오션뷰 4박, 마우이 렌터카 3일 · 상품코드 HHW130270201KEB</p>
+      </div>
+      <dl class="kv">
+        <div>
+          <dt>기간 · 경로</dt>
+          <dd>2027-02-01(월) ~ 02-09(화) · 7박 9일 · 인천 → 마우이(3박) → 호놀룰루(4박) → 인천</dd>
+        </div>
+        <div>
+          <dt>항공</dt>
+          <dd>① 02/01(월) 20:50 인천 KE0053 → 02/01(월) 09:40 호놀룰루 (7시간 50분, 기내식 2회)<br>② 02/08(월) 11:40 호놀룰루 KE0054 → 02/09(화) 17:35 인천 (10시간 55분)<br>③ 호놀룰루 ↔ 마우이 주내선 왕복 포함 (마우이행 당일 환승, 4일차 개별 탑승)</dd>
+        </div>
+        <div>
+          <dt>숙소</dt>
+          <dd>하얏트 리젠시 마우이 리조트 &amp; 스파 (카아나팔리 비치, 4성·오션뷰) 3박<br>하얏트 리젠시 와이키키 비치 리조트 &amp; 스파 (4성·오션뷰) 4박</dd>
+        </div>
+        <div>
+          <dt>요금</dt>
+          <dd>성인 1인 6,059,000원 (유류할증료 509,800원·제세공과금 포함) · 2인 12,118,000원</dd>
+        </div>
+        <div>
+          <dt>미팅</dt>
+          <dd>02/01(월) 17:50 인천공항 제2여객터미널 3층 1번 출입문(A카운터 옆) 여행사카운터 내 하나투어 테이블</dd>
+        </div>
+      </dl>
+      <div class="price-line"><b>6,059,000원</b><small>1인 · 5개월 무이자 시 월 1,211,800원</small></div>
+
+      <ul class="itin">
+        <li><span class="d">1일차<br>02/01</span><span class="c"><b>인천 → 호놀룰루 → 마우이</b>20:50 출발, 09:40 호놀룰루 도착 후 마우이 환승 · 렌터카 픽업 · 하얏트 마우이 체크인 (조식 기내식, 중·석식 불포함)</span></li>
+        <li><span class="d">2일차<br>02/02</span><span class="c"><b>마우이 자유일정</b>할레아칼라 국립공원 · 카아나팔리 비치 · 라하이나 · 이아오 밸리 · 반얀트리 공원</span></li>
+        <li><span class="d">3일차<br>02/03</span><span class="c"><b>마우이 자유일정</b>리조트 부대시설이나 렌터카로 자유롭게 (하얏트 마우이 3박째)</span></li>
+        <li><span class="d">4일차<br>02/04</span><span class="c"><b>마우이 → 호놀룰루</b>리조트 체크아웃 · 렌터카 반납 후 주내선(약 50분, 기내식 없음) → 하얏트 와이키키 체크인</span></li>
+        <li><span class="d">5일차<br>02/05</span><span class="c"><b>호놀룰루 자유일정</b>알라모아나 쇼핑센터 · 월마트 · ABC 스토어 · 인터내셔널 마켓 플레이스 · 와이키키 비치 워크</span></li>
+        <li><span class="d">6일차<br>02/06</span><span class="c"><b>호놀룰루 자유일정</b>와이키키 트롤리(핑크·레드·그린 라인)로 시내 이동</span></li>
+        <li><span class="d">7일차<br>02/07</span><span class="c"><b>호놀룰루 자유일정</b>먹거리 추천 — 지오반니 새우 트럭 · 레오나즈 베이커리 · 에그 앤 띵스 · 마츠모토 쉐이브 아이스</span></li>
+        <li><span class="d">8일차<br>02/08</span><span class="c"><b>호놀룰루 → 인천</b>체크아웃 후 가이드와 공항 샌딩 → 11:40 KE0054 출발 (기내숙박)</span></li>
+        <li><span class="d">9일차<br>02/09</span><span class="c"><b>인천 도착</b>17:35 인천공항 도착, 귀가</span></li>
+      </ul>
+
+      <div class="body">
+        <p><strong>포함</strong> — 왕복 항공(일반석), 호놀룰루↔마우이 주내선 왕복, 숙박비, 마우이 렌터카 3일(컴펙트), 오아후 호텔→공항 샌딩, 유류할증료·투어리스트 텍스·공항세 등 제세금, 3억원 여행자보험, 현지 투어매니저/기사 경비</p>
+        <p><strong>불포함</strong> — 렌터카 주차·주유·보험, ESTA 발급비(대행 80,000원/인), 자유일정 중 식사, 개인경비, 매너팁(테이블·객실·포터·마사지)</p>
+        <p><strong>취소·계약금</strong> — 계약금 45만원/인(예약 후 3일 내) · 발권 후 환불 불가, 이름변경·취소 시 30만원. 지금(2026년 11월) 예약하면 취소료 45만원 구간(2026-12-02까지), 12/03부터 75만원.</p>
+      </div>
+      <div class="tagline">
+        <span class="tag sage">7박 9일</span>
+        <span class="tag sage">국적기 직항</span>
+        <span class="tag rose">오션뷰 7박</span>
+        <span class="tag">렌터카 3일</span>
+        <span class="tag">자유일정</span>
+        <span class="tag">3억 여행자보험</span>
+      </div>
+      <a class="link-btn primary" href="https://m.hanatour.com/trp/pkg/CHPC0PKG0200M100?pkgCd=HHW130270201KEB&amp;type=H01" target="_blank" rel="noopener noreferrer">하나투어 상품 페이지 ↗</a>
+      <a class="link-btn" href="https://esta.cbp.dhs.gov" target="_blank" rel="noopener noreferrer">ESTA 공식 신청 ↗</a>
+      <p class="note">2026-11-24 상품 페이지 기준으로 정리했어요. 요금·유류할증료는 발권 시점에 달라질 수 있습니다.</p>
+    </div>
+
     <div class="ref">
       <div class="ref-head">
         <div class="ref-icon sage" aria-hidden="true">🌺</div>
-        <h3>하와이 준비 체크 포인트</h3>
+        <h3>이 상품 기준으로 챙길 것</h3>
       </div>
       <div class="body">
-        <p><strong>입국</strong> — 여권 유효기간 6개월 이상, ESTA는 출발 최소 72시간 전까지 신청하세요. 기내에서 농산물·식품 신고서를 내니 견과·과일은 챙기지 않는 편이 편해요.</p>
-        <p><strong>전원</strong> — 하와이는 미국식 110~120V, 둥근 2핀(A/B형)이에요. 한국 콘센트와 달라 <strong>돼지코 어댑터</strong>가 필요합니다.</p>
-        <p><strong>돈</strong> — 팁 문화가 있어 15~20%를 줍니다. $1·$5 <strong>소액권</strong>을 미리 환전해 두면 편해요. 카드 결제는 대부분 가능합니다.</p>
-        <p><strong>이동</strong> — 렌터카를 쓸 계획이면 <strong>국제운전면허증</strong>과 한국 면허증을 함께 챙기세요. 주차·주유는 렌터카 반납 조건을 미리 확인합니다.</p>
-        <p>항공권·숙소 링크와 가보고 싶은 곳은 아래 <strong>내 메모 · 링크</strong>에 담아 두세요. 출발 날짜를 넣으면 D-day가 계산됩니다.</p>
+        <p><strong>ESTA</strong> — 항공·숙소는 포함이지만 ESTA는 별도예요. 하나투어 대행은 1인 80,000원, 직접 신청은 21달러. 출발일 72시간 전까지 승인돼야 하고, 대행은 20일 전 승인을 권장합니다. 전자여권만 가능해요.</p>
+        <p><strong>렌터카</strong> — 마우이 렌터카 3일(컴펙트)은 포함이지만 <strong>보험·주유·주차는 불포함</strong>입니다. 카훌루이 공항 지점에서 알라모 또는 허츠 셔틀을 타고 픽업하고, 4일차 반납합니다.</p>
+        <p><strong>주차·리조트피</strong> — 하얏트 마우이 셀프 주차비는 불포함 <strong>$66/일</strong>. 리조트피 부과 여부는 예약 시 상담원에게 확인하세요.</p>
+        <p><strong>식사</strong> — 마우이·와이키키 모두 <strong>조식부터 불포함</strong>(1일차 조식만 기내식)이라 8일치 식비를 따로 잡아야 해요.</p>
+        <p><strong>팁</strong> — 테이블팁 15~20%, 객실팁·포터비·마사지팁은 자율. $1·$5 소액권을 미리 환전해 두면 편합니다.</p>
+        <p><strong>전원</strong> — 미국식 110~120V, 둥근 2핀(A/B형). <strong>돼지코 어댑터</strong>가 필요해요.</p>
+        <p><strong>선택관광</strong> — 상품가에 불포함, 출발 7일 전까지 사전 신청. 참여하지 않아도 일정상 불이익은 없습니다.</p>
       </div>
       <div class="tagline">
-        <span class="tag rose">ESTA</span>
-        <span class="tag">여권 6개월</span>
-        <span class="tag">110V 돼지코</span>
-        <span class="tag">달러 소액권</span>
-        <span class="tag sage">국제운전면허증</span>
+        <span class="tag rose">ESTA 8만원</span>
+        <span class="tag">렌터카 보험 별도</span>
+        <span class="tag">주차 $66/일</span>
+        <span class="tag">식사 불포함</span>
+        <span class="tag sage">110V 돼지코</span>
       </div>
-      <a class="link-btn primary" href="https://esta.cbp.dhs.gov" target="_blank" rel="noopener noreferrer">ESTA 공식 신청 ↗</a>
       <a class="link-btn" href="https://www.0404.go.kr" target="_blank" rel="noopener noreferrer">외교부 해외안전여행 ↗</a>
     </div>
 
@@ -988,9 +1066,49 @@
     "TIP. 2~3곳 이상 방문 견적 후 서면 견적서로 확정하면 당일 추가요금 방지에 안전해요."
   ].join("\n");
 
+  var HONEYMOON_PRODUCT_NOTE = [
+    "하나투어 하와이 허니문 마우이 연계 9일 (HHW130270201KEB)",
+    "https://m.hanatour.com/trp/pkg/CHPC0PKG0200M100?pkgCd=HHW130270201KEB&type=H01",
+    "성인 1인 6,059,000원 (유류할증료 509,800원 포함)",
+    "",
+    "계약금 1인 450,000원, 예약일 기준 3일 이내 납입",
+    "발권 후 환불 불가 · 이름변경/취소 시 300,000원",
+    "2026-12-02까지 취소 시 45만원, 12/03~2027-01-16은 75만원, 01/17 이후는 요금의 70%"
+  ].join("\n");
+
+  var ESTA_NOTE = [
+    "하나투어 대행 80,000원/인 (전자여권만 가능) 또는 직접 신청 21달러",
+    "https://esta.cbp.dhs.gov",
+    "출발 72시간 전까지 승인 필요 · 대행 시 20일 전 승인 권장"
+  ].join("\n");
+
+  var RENTAL_CAR_NOTE = [
+    "카훌루이 공항 지점, 알라모 또는 허츠 셔틀 이용",
+    "상품 포함은 컴펙트 3일 기준 · 보험/주유/주차는 불포함",
+    "4일차 렌터카 반납 후 주내선 탑승"
+  ].join("\n");
+
+  // v2 기본 체크리스트 (업그레이드 병합에서 사용자 추가 항목을 가려내는 데 사용)
+  var V2_HONEYMOON_ITEMS = [
+    "하와이 항공권 예약",
+    "숙소(호텔·리조트) 예약",
+    "여권 유효기간 6개월 이상 확인",
+    "미국 ESTA 전자여행허가 신청",
+    "국제운전면허증 발급",
+    "렌터카 예약",
+    "팁용 달러 소액권 환전",
+    "110V 돼지코 어댑터 준비",
+    "유심 · eSIM 준비",
+    "여행자보험 가입",
+    "항공권 · 숙소 바우처 저장",
+    "공항 이동 수단 예약",
+    "현지 투어 · 레스토랑 예약",
+    "짐 싸기 (상비약·선크림 포함)"
+  ];
+
   function defaultState() {
     return {
-      version: 2,
+      version: 3,
       updatedAt: null,
       pages: {
         move: {
@@ -1047,23 +1165,28 @@
           notes: []
         },
         honeymoon: {
-          date: "",
-          items: items([
-            "하와이 항공권 예약",
-            "숙소(호텔·리조트) 예약",
-            "여권 유효기간 6개월 이상 확인",
-            "미국 ESTA 전자여행허가 신청",
-            "국제운전면허증 발급",
-            "렌터카 예약",
-            "팁용 달러 소액권 환전",
-            "110V 돼지코 어댑터 준비",
-            "유심 · eSIM 준비",
-            "여행자보험 가입",
-            "항공권 · 숙소 바우처 저장",
-            "공항 이동 수단 예약",
-            "현지 투어 · 레스토랑 예약",
-            "짐 싸기 (상비약·선크림 포함)"
-          ]),
+          date: "2027-02-01",
+          items: [
+            item("하나투어 예약 확정 · 계약금 45만원/인 입금 (예약 후 3일 내)", HONEYMOON_PRODUCT_NOTE),
+            item("항공권 발권 확인 (KE0053 2/1 20:50 · KE0054 2/8 11:40)"),
+            item("호텔 바우처 확인 (하얏트 마우이 3박 · 와이키키 4박 오션뷰)"),
+            item("주내선 연결편 확인 (호놀룰루↔마우이 수하물 규정)"),
+            item("마우이 렌터카 바우처 확인 (컴펙트 3일)", RENTAL_CAR_NOTE),
+            item("렌터카 보험 가입 (상품 불포함 · 현지 결제)"),
+            item("마우이 호텔 주차비 예산 ($66/일)"),
+            item("리조트피 부과 여부 확인 (예약 상담원)"),
+            item("ESTA 신청 2인", ESTA_NOTE),
+            item("여권 유효기간 6개월 · 전자여권 확인"),
+            item("국제운전면허증 발급 (렌터카 운전자)"),
+            item("자유일정 식사 예약 · 예산 (조식 불포함)"),
+            item("선택관광 신청 (출발 7일 전까지)"),
+            item("팁·소액권 달러 환전 ($1·$5)"),
+            item("110V 돼지코 어댑터 · 유심/eSIM 준비"),
+            item("출국일 17:50 인천공항 T2 3층 1번 출입문 미팅"),
+            item("귀국 샌딩 시간 안내 받기 (2/7 저녁 가이드 연락)"),
+            item("짐 싸기 (상비약 · 선크림 · 수영복)"),
+            item("US$800 초과 구매 시 관세 확인")
+          ],
           notes: []
         }
       }
@@ -1083,6 +1206,24 @@
   var saveTimer = null;
   var toastTimer = null;
 
+  // v2 → v3: 앱이 준 기본 항목은 새 상품 기준으로 교체하고,
+  // 사용자가 직접 추가한 항목과 체크 상태는 그대로 살립니다.
+  function upgradeHoneymoon(dst) {
+    var stored = Array.isArray(dst.items) ? dst.items : [];
+    var byText = {};
+    stored.forEach(function (it) { byText[it.text] = it; });
+    var custom = stored.filter(function (it) {
+      return V2_HONEYMOON_ITEMS.indexOf(it.text) === -1;
+    });
+    var fresh = defaultState().pages.honeymoon.items.map(function (d) {
+      var prev = byText[d.text];
+      if (!prev) return d;
+      return { id: prev.id, text: d.text, done: prev.done, note: prev.note || d.note };
+    });
+    dst.items = fresh.concat(custom);
+    return dst;
+  }
+
   function loadState() {
     var base = defaultState();
     var raw = null;
@@ -1094,7 +1235,7 @@
       PAGES.forEach(function (pid) {
         var src = parsed.pages[pid] || {};
         var dst = base.pages[pid];
-        if (typeof src.date === "string") dst.date = src.date;
+        if (typeof src.date === "string" && src.date) dst.date = src.date;
         if (Array.isArray(src.items)) {
           dst.items = src.items.filter(function (it) {
             return it && typeof it.text === "string";
@@ -1129,6 +1270,8 @@
           });
         }
       });
+      var storedVersion = typeof parsed.version === "number" ? parsed.version : 1;
+      if (storedVersion < 3) base.pages.honeymoon = upgradeHoneymoon(base.pages.honeymoon);
       if (typeof parsed.updatedAt === "string") base.updatedAt = parsed.updatedAt;
       return base;
     } catch (e) {
