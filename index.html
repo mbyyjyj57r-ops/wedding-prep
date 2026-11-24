@@ -2419,7 +2419,7 @@
     var connected = !!(sync.code && (sync.status === "live" || sync.status === "connecting" || sync.status === "error"));
     var code = connected ? sync.code : "";
     var html =
-      '<h2>🔒 둘만의 비밀코드</h2>' +
+      '<h2>🔒 둘만의 비밀코드 입력</h2>' +
       '<p class="sheet-sub">코드를 입력하면 두 사람만 수정하고 실시간으로 동기화돼요.</p>' +
       '<div class="field"><label for="syncCode">비밀코드</label>' +
       '<input id="syncCode" type="text" maxlength="40" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="둘만 아는 코드" value="' + escapeHtml(code) + '">' +
