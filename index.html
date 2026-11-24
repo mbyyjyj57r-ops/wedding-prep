@@ -186,13 +186,49 @@
 
   /* ---------- checklist ---------- */
   .list{list-style:none; margin:0; padding:0 4px;}
-  .item{
-    display:flex; align-items:flex-start; gap:12px;
-    padding:13px 12px; border-radius:14px;
-    transition:background .18s;
-  }
+  .item{display:block; padding:0; border-radius:14px;}
   .item + .item{border-top:1px solid var(--line-soft); border-radius:0;}
-  .item:active{background:#FDFAF6;}
+  .item-row{
+    display:flex; align-items:flex-start; gap:12px;
+    padding:13px 12px; transition:background .18s;
+  }
+  .item-row:active{background:#FDFAF6;}
+  .item-text-btn{
+    flex:1 1 auto; min-width:0; display:flex; align-items:flex-start; gap:6px;
+    padding:0; text-align:left; background:none;
+  }
+  .caret{flex:0 0 auto; font-size:11px; color:#C0B2A5; margin-top:5px; transition:transform .2s;}
+  .item-text-btn[aria-expanded="true"] .caret{transform:rotate(180deg);}
+  .badge-note{
+    flex:0 0 auto; margin-top:3px; padding:3px 7px; border-radius:7px;
+    background:var(--sage-soft); color:#5F7359; font-size:10px; font-weight:700;
+    letter-spacing:.01em; white-space:nowrap;
+  }
+  .badge-note[hidden]{display:none;}
+  .item-note{
+    padding:4px 12px 15px 50px; background:#FFFDFB;
+    border-top:1px dashed var(--line-soft);
+    animation:notefade .22s ease both;
+  }
+  @keyframes notefade{from{opacity:0;} to{opacity:1;}}
+  .note-input{
+    display:block; width:100%; min-height:92px; max-height:420px;
+    padding:11px 12px; border-radius:12px; border:1px solid var(--line);
+    background:#fff; color:var(--ink); font-size:16px; line-height:1.65;
+    resize:vertical; overflow:auto;
+  }
+  .note-input::placeholder{color:#B9ACA0;}
+  .note-links{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;}
+  .note-links[hidden]{display:none;}
+  .note-link{
+    display:inline-flex; align-items:center; gap:4px;
+    min-height:34px; padding:6px 10px; border-radius:9px;
+    background:#F6F0E9; border:1px solid var(--line-soft);
+    font-size:12px; font-weight:600; color:var(--ink-2); text-decoration:none;
+    max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .note-link:active{background:#EFE6DB;}
+  .note-hint{font-size:10.5px; color:var(--muted); margin-top:8px; line-height:1.5;}
   .check{
     flex:0 0 auto; width:26px; height:26px; margin-top:1px; border-radius:50%;
     border:1.8px solid #D9CBBC; background:#fff; display:grid; place-items:center;
@@ -925,30 +961,54 @@
 
   /* ---------------- default data ---------------- */
 
-  function item(text) { return { id: uid(), text: text, done: false }; }
-  function items(list) { return list.map(item); }
+  function item(text, note) { return { id: uid(), text: text, done: false, note: note || "" }; }
+  function items(list) { return list.map(function (t) { return item(t); }); }
+
+  var MOVE_VENDOR_NOTE = [
+    "아정당 이사 · 1522-9777",
+    "https://www.ajd.co.kr/landing/moving",
+    "포장이사/반포장이사 무료 견적 비교, 인터넷 이전 상담도 함께 가능",
+    "",
+    "위매치다이사",
+    "https://da24.co.kr",
+    "소비자 평가 등급·실후기 기반 최대 3곳 매칭",
+    "",
+    "짐싸 · 1833-2427",
+    "https://www.zimssa.com",
+    "기사님별 평점·후기 보고 견적 비교",
+    "",
+    "미소 · 1577-8808",
+    "https://miso.kr/moving-rfq",
+    "최대 4곳 비교, 당일 추가요금 0원 인증파트너 제도",
+    "",
+    "영구크린/영구이사 · 1566-0924",
+    "https://www.mcygclean.com/house/index.jsp",
+    "공정위 CCM 인증, 방문견적 후 추가비용 200% 책임보상제",
+    "",
+    "TIP. 2~3곳 이상 방문 견적 후 서면 견적서로 확정하면 당일 추가요금 방지에 안전해요."
+  ].join("\n");
 
   function defaultState() {
     return {
-      version: 1,
+      version: 2,
       updatedAt: null,
       pages: {
         move: {
           date: "2026-12-11",
-          items: items([
-            "이사 날짜 확정 · 이사업체 예약",
-            "이사 견적 비교 (2~3곳)",
-            "전입신고 · 확정일자 받기",
-            "가스 이전·중지 신청",
-            "전기 이전 신청 (한전)",
-            "인터넷·TV 이전 설치 예약",
-            "주소지 변경 (카드·은행·보험·택배 앱)",
-            "종량제봉투 정리 (남은 봉투 확인·환불)",
-            "폐가전 수거 신청",
-            "입주 청소 예약",
-            "도어락 비밀번호 변경",
-            "우편물 전송 서비스 신청"
-          ]),
+          items: [
+            item("이사 날짜 확정 · 이사업체 예약", MOVE_VENDOR_NOTE),
+            item("이사 견적 비교 (2~3곳)"),
+            item("전입신고 · 확정일자 받기"),
+            item("가스 이전·중지 신청"),
+            item("전기 이전 신청 (한전)"),
+            item("인터넷·TV 이전 설치 예약"),
+            item("주소지 변경 (카드·은행·보험·택배 앱)"),
+            item("종량제봉투 정리 (남은 봉투 확인·환불)"),
+            item("폐가전 수거 신청"),
+            item("입주 청소 예약"),
+            item("도어락 비밀번호 변경"),
+            item("우편물 전송 서비스 신청")
+          ],
           notes: []
         },
         shoot: {
@@ -1019,6 +1079,7 @@
 
   var state = loadState();
   var filters = { move: "all", shoot: "all", wedding: "all", honeymoon: "all" };
+  var openNotes = { move: null, shoot: null, wedding: null, honeymoon: null };
   var saveTimer = null;
   var toastTimer = null;
 
@@ -1038,7 +1099,20 @@
           dst.items = src.items.filter(function (it) {
             return it && typeof it.text === "string";
           }).map(function (it) {
-            return { id: typeof it.id === "string" && it.id ? it.id : uid(), text: it.text, done: !!it.done };
+            return {
+              id: typeof it.id === "string" && it.id ? it.id : uid(),
+              text: it.text,
+              done: !!it.done,
+              note: typeof it.note === "string" ? it.note.slice(0, 4000) : null
+            };
+          });
+          var defaults = defaultState().pages[pid].items;
+          dst.items.forEach(function (it) {
+            if (typeof it.note === "string") return;
+            it.note = "";
+            for (var k = 0; k < defaults.length; k++) {
+              if (defaults[k].text === it.text) { it.note = defaults[k].note || ""; break; }
+            }
           });
         }
         if (Array.isArray(src.notes)) {
@@ -1233,6 +1307,9 @@
       li.className = "item" + (it.done ? " done" : "");
       li.setAttribute("data-id", it.id);
 
+      var row = document.createElement("div");
+      row.className = "item-row";
+
       var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "check";
@@ -1242,9 +1319,31 @@
       btn.setAttribute("data-act", "toggle");
       btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5l4.5 4.5 10-10" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+      var isOpen = openNotes[pid] === it.id;
+      var textBtn = document.createElement("button");
+      textBtn.type = "button";
+      textBtn.className = "item-text-btn";
+      textBtn.setAttribute("data-act", "note");
+      textBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      textBtn.setAttribute("aria-controls", "note-" + it.id);
+      textBtn.setAttribute("aria-label", it.text + " 참고자료 열기");
+
       var span = document.createElement("span");
       span.className = "item-text";
       span.textContent = it.text;
+
+      var caret = document.createElement("span");
+      caret.className = "caret";
+      caret.setAttribute("aria-hidden", "true");
+      caret.textContent = "⌄";
+
+      textBtn.appendChild(span);
+      textBtn.appendChild(caret);
+
+      var badge = document.createElement("span");
+      badge.className = "badge-note";
+      badge.textContent = "메모";
+      if (!(it.note && it.note.trim())) badge.hidden = true;
 
       var del = document.createElement("button");
       del.type = "button";
@@ -1253,11 +1352,110 @@
       del.setAttribute("aria-label", it.text + " 삭제");
       del.textContent = "×";
 
-      li.appendChild(btn);
-      li.appendChild(span);
-      li.appendChild(del);
+      row.appendChild(btn);
+      row.appendChild(textBtn);
+      row.appendChild(badge);
+      row.appendChild(del);
+      li.appendChild(row);
+
+      if (isOpen) li.appendChild(buildNotePanel(pid, it));
+
       ul.appendChild(li);
     });
+  }
+
+  function extractLinks(text) {
+    var found = [];
+    var seen = {};
+    var urlRe = /https?:\/\/[^\s<>"')]+/g;
+    var phoneRe = /(?:\b0\d{1,2}-\d{3,4}-\d{4}\b|\b1\d{3}-\d{4}\b)/g;
+    var m;
+    while ((m = urlRe.exec(text))) {
+      var url = m[0].replace(/[.,;]+$/, "");
+      if (seen[url]) continue;
+      seen[url] = true;
+      found.push({ href: url, label: prettyUrl(url), icon: "↗" });
+    }
+    while ((m = phoneRe.exec(text))) {
+      var tel = m[0];
+      var key = "tel:" + tel;
+      if (seen[key]) continue;
+      seen[key] = true;
+      found.push({ href: "tel:" + tel.replace(/-/g, ""), label: tel, icon: "☎" });
+    }
+    return found;
+  }
+
+  function renderNoteLinks(container, text) {
+    var links = extractLinks(text || "");
+    container.innerHTML = "";
+    container.hidden = !links.length;
+    links.forEach(function (l) {
+      var a = document.createElement("a");
+      a.className = "note-link";
+      a.href = l.href;
+      if (l.href.indexOf("http") === 0) {
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+      }
+      a.textContent = l.icon + " " + l.label;
+      container.appendChild(a);
+    });
+  }
+
+  function autosize(ta) {
+    if (!ta) return;
+    ta.style.height = "auto";
+    var h = Math.min(Math.max(ta.scrollHeight, 92), 420);
+    ta.style.height = h + "px";
+  }
+
+  function buildNotePanel(pid, it) {
+    var panel = document.createElement("div");
+    panel.className = "item-note";
+    panel.id = "note-" + it.id;
+
+    var ta = document.createElement("textarea");
+    ta.className = "note-input";
+    ta.rows = 3;
+    ta.maxLength = 4000;
+    ta.value = it.note || "";
+    ta.placeholder = "이 항목의 참고자료·메모를 적어 두세요. 링크(https://…)를 넣으면 아래에 바로 열 수 있는 버튼이 생겨요.";
+    ta.setAttribute("aria-label", it.text + " 참고자료");
+
+    var links = document.createElement("div");
+    links.className = "note-links";
+    renderNoteLinks(links, ta.value);
+
+    var hint = document.createElement("p");
+    hint.className = "note-hint";
+    hint.textContent = "이 항목의 메모는 이 기기에 자동 저장돼요.";
+
+    panel.appendChild(ta);
+    panel.appendChild(links);
+    panel.appendChild(hint);
+
+    ta.addEventListener("input", function () {
+      it.note = ta.value;
+      autosize(ta);
+      renderNoteLinks(links, ta.value);
+      updateNoteBadge(pid, it);
+      save();
+    });
+
+    requestAnimationFrame(function () {
+      autosize(ta);
+      if (!it.note) { try { ta.focus({ preventScroll: false }); } catch (e) {} }
+    });
+
+    return panel;
+  }
+
+  function updateNoteBadge(pid, it) {
+    var li = document.querySelector('#list-' + pid + ' .item[data-id="' + it.id + '"]');
+    if (!li) return;
+    var badge = li.querySelector(".badge-note");
+    if (badge) badge.hidden = !(it.note && it.note.trim());
   }
 
   function renderNotes(pid) {
@@ -1379,10 +1577,16 @@
     renderHeaderSub();
   }
 
+  function toggleNote(pid, id) {
+    openNotes[pid] = openNotes[pid] === id ? null : id;
+    renderItems(pid);
+  }
+
   function deleteItem(pid, id) {
     var list = state.pages[pid].items;
     var i = findItem(pid, id);
     if (i < 0) return;
+    if (openNotes[pid] === id) openNotes[pid] = null;
     var removed = list[i];
     list.splice(i, 1);
     save();
@@ -1406,7 +1610,7 @@
       toast("이미 있는 항목이에요");
       return false;
     }
-    state.pages[pid].items.push({ id: uid(), text: t.slice(0, 120), done: false });
+    state.pages[pid].items.push({ id: uid(), text: t.slice(0, 120), done: false, note: "" });
     save();
     renderPage(pid);
     return true;
@@ -1829,7 +2033,9 @@
           var li = actEl.closest(".item");
           if (!li) return;
           var id = li.getAttribute("data-id");
-          if (actEl.getAttribute("data-act") === "toggle") toggleItem(pid, id);
+          var act = actEl.getAttribute("data-act");
+          if (act === "toggle") toggleItem(pid, id);
+          else if (act === "note") toggleNote(pid, id);
           else deleteItem(pid, id);
         });
       }
