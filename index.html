@@ -2023,7 +2023,7 @@
             document.getElementById("importFile").click();
           });
           ov.querySelector("[data-reset]").addEventListener("click", function () {
-            askConfirm("체크한 항목과 추가한 메모, 날짜가 모두 지워지고 처음 상태로 돌아가요. 되돌릴 수 없어요.", "초기화", true).then(function (ok) {
+            askConfirm("체크한 항목과 추가한 메모, 날짜가 모두 지워지고 처음 상태로 돌아가요. 되돌릴 수 없어요." + sharedNote(), "초기화", true).then(function (ok) {
               if (!ok) return;
               state = defaultState();
               save(true);
@@ -2066,7 +2066,7 @@
         toast("백업 파일 형식이 아니에요");
         return;
       }
-      askConfirm("지금 기록을 백업 파일의 내용으로 바꿔요. 현재 체크·메모는 사라져요.", "불러오기").then(function (ok) {
+      askConfirm("지금 기록을 백업 파일의 내용으로 바꿔요. 현재 체크·메모는 사라져요." + sharedNote(), "불러오기").then(function (ok) {
         if (!ok) return;
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed)); } catch (e) {}
         state = loadState();
@@ -2394,9 +2394,12 @@
     opts = opts || {};
     state = normalizeState(data);
     setStored(STORAGE_KEY, JSON.stringify(state));
-    renderAll();
-    showTab(activeTab());
+    renderAll();          // 보고 있던 탭·스크롤 위치는 건드리지 않습니다
     if (!opts.silent) flashSaved();
+  }
+
+  function sharedNote() {
+    return sync.ref ? " 지금은 동기화 중이라 신랑 폰의 기록도 함께 바뀌어요." : "";
   }
 
   function handleSyncFailure(err, fromWrite) {
