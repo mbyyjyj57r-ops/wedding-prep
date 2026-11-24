@@ -1511,6 +1511,12 @@
     });
   }
 
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
   function prettyUrl(url) {
     try {
       var u = new URL(url);
@@ -1586,20 +1592,27 @@
     var list = state.pages[pid].items;
     var i = findItem(pid, id);
     if (i < 0) return;
-    if (openNotes[pid] === id) openNotes[pid] = null;
-    var removed = list[i];
-    list.splice(i, 1);
-    save();
-    renderPage(pid);
-    toast("삭제했어요", {
-      label: "실행 취소",
-      fn: function () {
-        var lst = state.pages[pid].items;
-        lst.splice(Math.min(i, lst.length), 0, removed);
-        save();
-        renderPage(pid);
-        toast("되살렸어요");
-      }
+    var target = list[i];
+    var label = target.text.length > 32 ? target.text.slice(0, 32) + "…" : target.text;
+    askConfirm("‘" + label + "’ 항목을 삭제할까요? 삭제한 뒤에도 실행 취소로 되살릴 수 있어요.", "삭제", true).then(function (ok) {
+      if (!ok) return;
+      var idx = findItem(pid, id);
+      if (idx < 0) return;
+      if (openNotes[pid] === id) openNotes[pid] = null;
+      var removed = list[idx];
+      list.splice(idx, 1);
+      save();
+      renderPage(pid);
+      toast("삭제했어요", {
+        label: "실행 취소",
+        fn: function () {
+          var lst = state.pages[pid].items;
+          lst.splice(Math.min(idx, lst.length), 0, removed);
+          save();
+          renderPage(pid);
+          toast("되살렸어요");
+        }
+      });
     });
   }
 
@@ -1640,18 +1653,27 @@
     var i = -1;
     for (var k = 0; k < notes.length; k++) if (notes[k].id === id) { i = k; break; }
     if (i < 0) return;
-    var removed = notes[i];
-    notes.splice(i, 1);
-    save();
-    renderPage(pid);
-    toast("메모를 삭제했어요", {
-      label: "실행 취소",
-      fn: function () {
-        state.pages[pid].notes.splice(i, 0, removed);
-        save();
-        renderPage(pid);
-        toast("되살렸어요");
-      }
+    var target = notes[i];
+    var label = target.title || "메모";
+    if (label.length > 32) label = label.slice(0, 32) + "…";
+    askConfirm("‘" + label + "’ 메모를 삭제할까요? 삭제한 뒤에도 실행 취소로 되살릴 수 있어요.", "삭제", true).then(function (ok) {
+      if (!ok) return;
+      var idx = -1;
+      for (var n = 0; n < notes.length; n++) if (notes[n].id === id) { idx = n; break; }
+      if (idx < 0) return;
+      var removed = notes[idx];
+      notes.splice(idx, 1);
+      save();
+      renderPage(pid);
+      toast("메모를 삭제했어요", {
+        label: "실행 취소",
+        fn: function () {
+          state.pages[pid].notes.splice(idx, 0, removed);
+          save();
+          renderPage(pid);
+          toast("되살렸어요");
+        }
+      });
     });
   }
 
@@ -1748,7 +1770,7 @@
       pendingConfirm = resolve;
       openSheet(
         '<h2>확인해 주세요</h2>' +
-        '<p class="confirm-text">' + text + "</p>" +
+        '<p class="confirm-text">' + escapeHtml(text) + "</p>" +
         '<div class="form-actions">' +
         '<button class="secondary-btn" type="button" data-cancel>취소</button>' +
         '<button class="primary-btn" type="button" data-ok' + (danger ? ' style="background:#A65852"' : "") + ">" + okLabel + "</button>" +
