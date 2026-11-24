@@ -7,8 +7,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="결혼 준비 노트">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>결혼 준비 노트 · 이사 · 촬영 · 결혼식 · 신혼여행</title>
-<meta name="description" content="이사·웨딩촬영·결혼식·신혼여행 준비를 한 곳에서 관리하는 체크리스트 웹앱. 할 일과 메모는 이 기기에만 저장됩니다.">
+<title>결혼 준비 노트 · 촬영 · 이사 · 결혼식 · 신혼여행</title>
+<meta name="description" content="웨딩촬영·이사·결혼식·신혼여행 준비를 한 곳에서 관리하는 체크리스트 웹앱. 할 일과 메모는 이 기기에만 저장됩니다.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FAF6F0'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%F0%9F%92%8D%3C/text%3E%3C/svg%3E">
 <style>
   :root{
@@ -457,7 +457,7 @@
     <div class="brand-mark" aria-hidden="true">💍</div>
     <div style="min-width:0">
       <h1>결혼 준비 노트</h1>
-      <p id="headerSub">이사 · 촬영 · 결혼식 · 신혼여행</p>
+      <p id="headerSub">촬영 · 이사 · 결혼식 · 신혼여행</p>
     </div>
   </div>
   <div class="header-tools">
@@ -467,71 +467,8 @@
 </header>
 
 <main id="main">
-  <!-- ================= 이사 ================= -->
-  <section class="page" id="page-move" data-page="move" aria-labelledby="tab-move">
-    <div class="hero">
-      <div class="hero-top">
-        <div>
-          <div class="hero-kicker"><span class="dot"></span>MOVE</div>
-          <p class="hero-sub">전입신고·주소 변경까지 한 번에</p>
-        </div>
-        <div class="dday empty" id="dday-move"><b>미정</b><small>날짜</small></div>
-      </div>
-      <div class="date-row">
-        <div style="flex:1 1 200px">
-          <span class="hero-date-label">이사 날짜</span>
-          <input class="date-input" type="date" id="date-move" aria-label="이사 날짜">
-        </div>
-        <button class="date-clear" type="button" data-clear="move" hidden>지우기</button>
-      </div>
-    </div>
-
-    <div class="section-head"><h2>체크리스트</h2><span id="count-move"></span></div>
-    <div class="card">
-      <div class="progress-wrap">
-        <div class="progress-top"><b id="ptitle-move">0 / 0 완료</b><span id="pct-move">0%</span></div>
-        <div class="bar"><i id="pbar-move"></i></div>
-      </div>
-      <div class="filters" data-filters="move">
-        <button class="chip" type="button" data-filter="all" aria-pressed="true">전체 <small></small></button>
-        <button class="chip" type="button" data-filter="todo" aria-pressed="false">할 일 <small></small></button>
-        <button class="chip" type="button" data-filter="done" aria-pressed="false">완료 <small></small></button>
-      </div>
-      <ul class="list" id="list-move"></ul>
-      <form class="add-row" data-add="move">
-        <input class="add-input" type="text" placeholder="할 일 추가 (예: 도어락 비밀번호 변경)" aria-label="이사 할 일 추가" maxlength="120" autocomplete="off">
-        <button class="add-btn" type="submit">추가</button>
-      </form>
-    </div>
-
-    <div class="section-head"><h2>참고자료</h2><span>종량제봉투</span></div>
-    <div class="ref">
-      <div class="ref-head">
-        <div class="ref-icon sage" aria-hidden="true">🗑️</div>
-        <h3>서초구 종량제봉투, 새 집에서 쓸 수 있을까</h3>
-      </div>
-      <div class="body">
-        <p><strong>서대문구</strong> — 같은 시 다른 구 봉투를 스티커 없이 쓸 수 있어요. 전입하며 남은 소량(보통 10장 안팎)은 그대로 배출됩니다. 양이 많거나 아파트 관리사무소가 걱정되면 서대문구청 청소행정과(02-330-1376)나 동주민센터에 확인하세요.</p>
-        <p><strong>강남구</strong> — 원칙적으로 다른 구 봉투 사용이 불가해 수거되지 않을 수 있어요. 서초구 지정 판매소에서 미사용분을 <strong>환불</strong>받는 편이 안전하고, 소량이면 강남구청 자원순환과나 동주민센터에 예외 수거를 확인하세요.</p>
-        <p><strong>재사용 봉투</strong>(손잡이형)는 서울시 전 자치구 공용이라 어느 구에서든 그대로 배출됩니다.</p>
-      </div>
-      <div class="tagline">
-        <span class="tag sage">재사용 봉투 = 서울 공용</span>
-        <span class="tag">서대문구 = 소량 사용 가능</span>
-        <span class="tag rose">강남구 = 원칙 불가 · 환불 권장</span>
-      </div>
-      <p class="note">구마다 기준이 달라요. 이사 갈 구가 정해지면 그 구 조례로 한 번 더 확인하면 확실합니다.</p>
-    </div>
-
-    <div class="section-head"><h2>내 메모 · 링크</h2><span>이사</span></div>
-    <div class="card" style="padding:14px">
-      <div id="notes-move"></div>
-      <button class="ghost-btn" type="button" data-note-add="move">＋ 메모 · 링크 추가</button>
-    </div>
-  </section>
-
   <!-- ================= 촬영 ================= -->
-  <section class="page" id="page-shoot" data-page="shoot" aria-labelledby="tab-shoot">
+  <section class="page active" id="page-shoot" data-page="shoot" aria-labelledby="tab-shoot">
     <div class="hero">
       <div class="hero-top">
         <div>
@@ -607,6 +544,69 @@
     <div class="card" style="padding:14px">
       <div id="notes-shoot"></div>
       <button class="ghost-btn" type="button" data-note-add="shoot">＋ 메모 · 링크 추가</button>
+    </div>
+  </section>
+
+  <!-- ================= 이사 ================= -->
+  <section class="page" id="page-move" data-page="move" aria-labelledby="tab-move">
+    <div class="hero">
+      <div class="hero-top">
+        <div>
+          <div class="hero-kicker"><span class="dot"></span>MOVE</div>
+          <p class="hero-sub">전입신고·주소 변경까지 한 번에</p>
+        </div>
+        <div class="dday empty" id="dday-move"><b>미정</b><small>날짜</small></div>
+      </div>
+      <div class="date-row">
+        <div style="flex:1 1 200px">
+          <span class="hero-date-label">이사 날짜</span>
+          <input class="date-input" type="date" id="date-move" aria-label="이사 날짜">
+        </div>
+        <button class="date-clear" type="button" data-clear="move" hidden>지우기</button>
+      </div>
+    </div>
+
+    <div class="section-head"><h2>체크리스트</h2><span id="count-move"></span></div>
+    <div class="card">
+      <div class="progress-wrap">
+        <div class="progress-top"><b id="ptitle-move">0 / 0 완료</b><span id="pct-move">0%</span></div>
+        <div class="bar"><i id="pbar-move"></i></div>
+      </div>
+      <div class="filters" data-filters="move">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">전체 <small></small></button>
+        <button class="chip" type="button" data-filter="todo" aria-pressed="false">할 일 <small></small></button>
+        <button class="chip" type="button" data-filter="done" aria-pressed="false">완료 <small></small></button>
+      </div>
+      <ul class="list" id="list-move"></ul>
+      <form class="add-row" data-add="move">
+        <input class="add-input" type="text" placeholder="할 일 추가 (예: 도어락 비밀번호 변경)" aria-label="이사 할 일 추가" maxlength="120" autocomplete="off">
+        <button class="add-btn" type="submit">추가</button>
+      </form>
+    </div>
+
+    <div class="section-head"><h2>참고자료</h2><span>종량제봉투</span></div>
+    <div class="ref">
+      <div class="ref-head">
+        <div class="ref-icon sage" aria-hidden="true">🗑️</div>
+        <h3>서초구 종량제봉투, 새 집에서 쓸 수 있을까</h3>
+      </div>
+      <div class="body">
+        <p><strong>서대문구</strong> — 같은 시 다른 구 봉투를 스티커 없이 쓸 수 있어요. 전입하며 남은 소량(보통 10장 안팎)은 그대로 배출됩니다. 양이 많거나 아파트 관리사무소가 걱정되면 서대문구청 청소행정과(02-330-1376)나 동주민센터에 확인하세요.</p>
+        <p><strong>강남구</strong> — 원칙적으로 다른 구 봉투 사용이 불가해 수거되지 않을 수 있어요. 서초구 지정 판매소에서 미사용분을 <strong>환불</strong>받는 편이 안전하고, 소량이면 강남구청 자원순환과나 동주민센터에 예외 수거를 확인하세요.</p>
+        <p><strong>재사용 봉투</strong>(손잡이형)는 서울시 전 자치구 공용이라 어느 구에서든 그대로 배출됩니다.</p>
+      </div>
+      <div class="tagline">
+        <span class="tag sage">재사용 봉투 = 서울 공용</span>
+        <span class="tag">서대문구 = 소량 사용 가능</span>
+        <span class="tag rose">강남구 = 원칙 불가 · 환불 권장</span>
+      </div>
+      <p class="note">구마다 기준이 달라요. 이사 갈 구가 정해지면 그 구 조례로 한 번 더 확인하면 확실합니다.</p>
+    </div>
+
+    <div class="section-head"><h2>내 메모 · 링크</h2><span>이사</span></div>
+    <div class="card" style="padding:14px">
+      <div id="notes-move"></div>
+      <button class="ghost-btn" type="button" data-note-add="move">＋ 메모 · 링크 추가</button>
     </div>
   </section>
 
@@ -887,11 +887,11 @@
 
 <nav class="tabbar" aria-label="페이지 전환">
   <div class="tab-inner" role="tablist">
-    <button class="tab" type="button" id="tab-move" role="tab" data-tab="move" aria-selected="true" aria-controls="page-move">
-      <span class="emoji" aria-hidden="true">📦</span><span>이사</span>
-    </button>
-    <button class="tab" type="button" id="tab-shoot" role="tab" data-tab="shoot" aria-selected="false" aria-controls="page-shoot">
+    <button class="tab" type="button" id="tab-shoot" role="tab" data-tab="shoot" aria-selected="true" aria-controls="page-shoot">
       <span class="emoji" aria-hidden="true">📸</span><span>촬영</span>
+    </button>
+    <button class="tab" type="button" id="tab-move" role="tab" data-tab="move" aria-selected="false" aria-controls="page-move">
+      <span class="emoji" aria-hidden="true">📦</span><span>이사</span>
     </button>
     <button class="tab" type="button" id="tab-wedding" role="tab" data-tab="wedding" aria-selected="false" aria-controls="page-wedding">
       <span class="emoji" aria-hidden="true">💒</span><span>결혼식</span>
@@ -910,7 +910,7 @@
   "use strict";
 
   var STORAGE_KEY = "wedding-prep-v1";
-  var PAGES = ["move", "shoot", "wedding", "honeymoon"];
+  var PAGES = ["shoot", "move", "wedding", "honeymoon"];
   var FILTERS = ["all", "todo", "done"];
 
   var GALLERY = [
@@ -1332,7 +1332,7 @@
     var sub = document.getElementById("headerSub");
     if (!sub) return;
     if (!best) {
-      sub.textContent = "이사 · 촬영 · 결혼식 · 신혼여행";
+      sub.textContent = "촬영 · 이사 · 결혼식 · 신혼여행";
       return;
     }
     var names = { move: "이사", shoot: "촬영", wedding: "결혼식", honeymoon: "신혼여행" };
@@ -1350,7 +1350,7 @@
 
   function activeTab() {
     var h = (location.hash || "").replace("#", "");
-    return PAGES.indexOf(h) >= 0 ? h : "move";
+    return PAGES.indexOf(h) >= 0 ? h : "shoot";
   }
 
   function showTab(pid) {
